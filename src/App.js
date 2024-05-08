@@ -17,9 +17,9 @@ function App() {
       `${WEATHER_API_URL}/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
     );
 
-    Promise.all([currentWeatherFetch, forecastFetch])
-      .then(async (response) => {
-        const weatherResponse = await response[0].json();
+    Promise.all([currentWeatherFetch, forecastFetch]) //Promise.all() pour exécuter deux requêtes HTTP en parallèle, la reponse de cette fonction est mise dans un tableau de deux columns 
+      .then(async (response) => { //si la reponse est trouvée
+        const weatherResponse = await response[0].json(); //transforme de données en JSON
         const forecastResponse = await response[1].json();
 
         setCurrentWeather({ city: searchData.label, ...weatherResponse });
@@ -27,13 +27,13 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(currentWeather);
-  console.log(forecast);
+  console.log('CurrentWeather',currentWeather);
+  console.log('prevision',forecast);
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
       {currentWeather && <CurrentWeather data={currentWeather} />}
-      {forecast && <Forecast data={forecast}/>}
+      {forecast && <Forecast data={forecast} />}
     </div>
   );
 }

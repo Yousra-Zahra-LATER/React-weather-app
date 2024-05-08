@@ -3,9 +3,8 @@ body {
   font-family:"Roboto", Arial !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color:rgb(248, 241, 215);
-
-}
+  background-image: url('./assets/ciel-bleu.jpg') ;
+   }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
